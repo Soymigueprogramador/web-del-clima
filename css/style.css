@@ -1,0 +1,40 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body{
+  background-color: black;
+}
+h1 {
+  color: white;
+  text-align: center;
+  font-size: 30px;
+}
+h2{
+  color: white;
+  text-align: center;
+  font-size: 20px;
+}
+ul{
+  list-style-type: none;
+}
+footer{
+  display: fixed;
+  bottom: 0;
+  padding: 10px 0px;
+  border-top: 2px solid white;
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+li{
+  display: inline-block;
+  margin-right: 50px;
+}
+.texto{
+  display: block;
+  text-align: center;
+  font-size: 10px;
+  margin-top: 5px;
+}
