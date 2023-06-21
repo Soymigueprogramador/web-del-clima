@@ -16,25 +16,31 @@ h2{
   text-align: center;
   font-size: 20px;
 }
-ul{
-  list-style-type: none;
+.cajamayor{
+  margin: 20px 20px;
 }
-footer{
-  display: fixed;
-  bottom: 0;
-  padding: 10px 0px;
-  border-top: 2px solid white;
+.cajabuscar{
+  padding: 10px 20;
+  background-color: grey;
+  max-width: 480px;
+  margin: 0px auto;
+}
+.buscar{
   width: 100%;
-  text-align: center;
+  background-color: black;
+  border:  none;
+  font-size: 2rem;
   color: white;
 }
-li{
-  display: inline-block;
-  margin-right: 50px;
+buscar:focus{
+  outline: none;
 }
-.texto{
-  display: block;
-  text-align: center;
-  font-size: 10px;
-  margin-top: 5px;
+button {
+  align-items: center;
+  justify-content: center;
+  border-color: white;
+  background-color: black;
+  color: white;
+  max-width: 480px;
+  margin: 0px auto;
 }
