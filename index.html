@@ -15,33 +15,33 @@
         Bienvenidos a este sitio web donde van a poder ver el clima de cualquier ciudad del mundo
     </h2>
     <main>
-       <div class="cajamayor">
-        <form id="buscando-formulario">
-          <div class="cajabuscar">
-            <input type="text" autocomplete="off" placeholder="buscar ciudad" class="buscar" id="cajabuscar">
-          </div>
-        </form>
-       </div>
-       
-       <div class="card-group">
-  <div class="card">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Asi esta el clima/h5>
-      <p class="card-text"></p>
-      <p class="card-text"><small class="text-body-secondary"></small></p>
+  <div class="cajamayor">
+    <form id="buscando-formulario">
+      <div class="cajabuscar">
+        <input type="text" autocomplete="off" placeholder="buscar ciudad" class="buscar" id="cajabuscar">
+      </div>
+    </form>
+  </div>
+
+  <div class="card-group">
+    <div class="card">
+      <img src="..." class="card-img-top" alt="..." id="temp-img">
+      <div class="card-body">
+        <h5 class="card-title" id="weather">Así está el clima</h5>
+        <p class="card-text" id="temp"></p>
+        <p class="card-text"><small class="text-body-secondary" id="range"></small></p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="..." class="card-img-top" alt="..." id="temp-img">
+      <div class="card-body">
+        <h5 class="card-title">Están en... </h5>
+        <p class="card-text" id="city"></p>
+        <p class="card-text"><small class="text-body-secondary" id="date"></small></p>
+      </div>
     </div>
   </div>
-  <div class="card">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Estan en... </h5>
-      <p class="card-text"></p>
-      <p class="card-text"><small class="text-body-secondary"></small></p>
-    </div>
-  </div>
-  
-  </main>
+</main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="./clima.js"></script>
 </body>
