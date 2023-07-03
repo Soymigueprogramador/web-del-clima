@@ -111,13 +111,13 @@ const imagenesDelClima = [
   "./img/verano.png",
 ];
 
-formBuscar.addEventListener("submit", (e) => {
+buscandoFormulario.addEventListener("submit", (e) => {
   e.preventDefault();
-  buscar();
+  Buscar();
 });
 
 function Buscar() {
-  const city = cityinput.value;
+  const cityInput = document.getElementById('cityInput');
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${api.key}`;
 
   fetch(url)
