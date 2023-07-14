@@ -3,13 +3,13 @@ const api = {
   url: "https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=91b3d6ad7f68d50bdb9d71d7a33030f9",
 };
 
-const buscar = document.getElementById("Buscar");
+const buscar = document.getElementById("buscar");
 const cajaBuscar = document.getElementById("cajabuscar");
 const buscandoFormulario = document.getElementById("buscando-formulario");
-const formBuscar = document.getElementById("formBuscar");
-const card = document.getElementById('card');
+const formBuscar = document.getElementById("formBuscar")
+const card = document.getElementById('card')
 const cityinput = document.getElementById('cityinput');
-const date = document.getElementById('date');
+const datos = document.getElementById('datos');
 const tempImg = document.getElementById('temp-img');
 const temp = document.getElementById('temp');
 const weather = document.getElementById('weather');
@@ -19,28 +19,30 @@ const imagenesDelClima = [
   "./img/invierno.png",
   "./img/lluvia.gif",
   "./img/nublado.png",
-  "./img/otoño.png",
+  "./img/soleado.png",
+  "./img/parcialmente_nubes.jpg",
+  "./img//parcialmente-nublado-lluvia-y-sol.gif",
   "./img/primavera.png",
-  "./img/parcialmente-nublado-lluvia-y-sol.gif",
-  "./img/sol.gif",
-  "./img/tormenta.gif",
+  "./img/tormentas.jpg",
   "./img/verano.png",
-  "./img/parcialmente-nublado.gif"
+  "./img/otoño.png"
 ];
 
-buscandoFormulario.addEventListener("submit", (e) => {
+function submitForm(e) {
   e.preventDefault();
   Buscar();
-});
+}
+buscandoFormulario.addEventListener('submit', submitForm);
 
 function Buscar() {
-  const cityInput = document.getElementById("cityinput").value;
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&APPID=${api.key}`;
+  const datos = document.getElementById("cityinput").value;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${datos}&APPID=${api.key}`;
 
   fetch(url)
     .then(Response => Response.json())
     .then((data) => {
-      actualizarClima(data);
+      console.log(data);
+      actualizarClima(datos);
     })
     .catch(error => {
       console.log("error", error);
@@ -49,18 +51,18 @@ function Buscar() {
 }
  
 function actualizarClima(data) {
-  const clima = toCelsius(data.main.temp);
+  const clima = toCelsius(datos.main.temp);
   const imagenesDelClimaArray = [];
 
   // Condiciones para las estaciones del clima
   if (clima >= 30) {
-    imagenesDelClimaArray.push('img/verano.png.png');
+    imagenesDelClimaArray.push('img/verano.png');
   } else if (clima <= 0) {
-    imagenesDelClimaArray.push('img/invierno.png.png');
+    imagenesDelClimaArray.push('img/invierno.png');
   } else if (clima >= 20) {
-    imagenesDelClimaArray.push('img/primavera.png.png');
+    imagenesDelClimaArray.push('img/primavera.png');
   } else if (clima <= 10) {
-    imagenesDelClimaArray.push('img/otoño.png.png');
+    imagenesDelClimaArray.push('img/otoño.png');
   }
 //creo este condicional para los datos del clima. 
 if(clima === "soleado") {
@@ -72,16 +74,13 @@ else if(clima === "parcialmente soleado") {
 else if(clima === "parcialmente nublado") {
   imagenesDelClimaArray.push('img/parcialmente-nublado.gif'); //este gif se va a usar para el mismo clima ya que es el mismo icono.
 }
-else if(clima === "lluvia") {
+else if(clima === "lluvia", "probabilidad de lluvia") {
   imagenesDelClimaArray.push('img/lluvia.gif');
 } 
 else if(clima === "parcialmente nublado con mejoras temporareas") {
   imagenesDelClimaArray.push('img/parcialmente-nublado-lluvia-y-sol.gif');
 } 
-else if(clima === "lluvias") {
-  imagenesDelClimaArray.push('img/lluvias.gif');
-} 
-else if(clima === "tormenta") {
+else if(clima === "tormenta", "probabilidad de tormentas") {
   imagenesDelClimaArray.push('img/tormenta.gif');
 }
 
