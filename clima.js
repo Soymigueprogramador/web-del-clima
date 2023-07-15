@@ -35,23 +35,23 @@ function submitForm(e) {
 buscandoFormulario.addEventListener('submit', submitForm);
 
 function Buscar() {
-  const datos = document.getElementById("cityinput").value;
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${datos}&APPID=${api.key}`;
+  const ciudad = document.getElementById("datos").value;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&APPID=${api.key}`;
 
   fetch(url)
     .then(Response => Response.json())
     .then((data) => {
       console.log(data);
-      actualizarClima(datos);
+      actualizarClima(data); // Pasar el objeto "data" en lugar de "datos"
     })
     .catch(error => {
       console.log("error", error);
       swal("ups", "ese dato te lo debo jaja :D", "error");
     });
 }
- 
+
 function actualizarClima(data) {
-  const clima = toCelsius(datos.main.temp);
+  const clima = toCelsius(data.main.temp);
   const imagenesDelClimaArray = [];
 
   // Condiciones para las estaciones del clima
@@ -64,25 +64,21 @@ function actualizarClima(data) {
   } else if (clima <= 10) {
     imagenesDelClimaArray.push('img/otoño.png');
   }
-//creo este condicional para los datos del clima. 
-if(clima === "soleado") {
-  imagenesDelClimaArray.push('img/sol.gif');
-}
-else if(clima === "parcialmente soleado") {
-  imagenesDelClimaArray.push('img/parcialmente-nublado.gif'); //este gif se va a usar para el mismo clima ya que es el mismo icono.
-}
-else if(clima === "parcialmente nublado") {
-  imagenesDelClimaArray.push('img/parcialmente-nublado.gif'); //este gif se va a usar para el mismo clima ya que es el mismo icono.
-}
-else if(clima === "lluvia", "probabilidad de lluvia") {
-  imagenesDelClimaArray.push('img/lluvia.gif');
-} 
-else if(clima === "parcialmente nublado con mejoras temporareas") {
-  imagenesDelClimaArray.push('img/parcialmente-nublado-lluvia-y-sol.gif');
-} 
-else if(clima === "tormenta", "probabilidad de tormentas") {
-  imagenesDelClimaArray.push('img/tormenta.gif');
-}
+  
+  // Condiciones para los datos del clima
+  if (clima === "soleado") {
+    imagenesDelClimaArray.push('img/sol.gif');
+  } else if (clima === "parcialmente soleado") {
+    imagenesDelClimaArray.push('img/parcialmente-nublado.gif');
+  } else if (clima === "parcialmente nublado") {
+    imagenesDelClimaArray.push('img/parcialmente-nublado.gif');
+  } else if (clima === "lluvia" || clima === "probabilidad de lluvia") {
+    imagenesDelClimaArray.push('img/lluvia.gif');
+  } else if (clima === "parcialmente nublado con mejoras temporareas") {
+    imagenesDelClimaArray.push('img/parcialmente-nublado-lluvia-y-sol.gif');
+  } else if (clima === "tormenta" || clima === "probabilidad de tormentas") {
+    imagenesDelClimaArray.push('img/tormenta.gif');
+  }
 
   temp.innerHTML = clima + "°c";
   tempImg.src = imagenesDelClimaArray[0];
