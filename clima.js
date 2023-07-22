@@ -6,8 +6,6 @@ const api = {
 const buscar = document.getElementById("buscar");
 const cajaBuscar = document.getElementById("cajabuscar");
 const buscandoFormulario = document.getElementById("buscando-formulario");
-const formBuscar = document.getElementById("formBuscar")
-const card = document.getElementById('card')
 const cityinput = document.getElementById('cityinput');
 const datos = document.getElementById('datos');
 const tempImg = document.getElementById('temp-img');
@@ -21,7 +19,7 @@ const imagenesDelClima = [
   "./img/nublado.png",
   "./img/soleado.png",
   "./img/parcialmente_nubes.jpg",
-  "./img//parcialmente-nublado-lluvia-y-sol.gif",
+  "./img/parcialmente-nublado-lluvia-y-sol.gif",
   "./img/primavera.png",
   "./img/tormentas.jpg",
   "./img/verano.png",
@@ -35,18 +33,17 @@ function submitForm(e) {
 buscandoFormulario.addEventListener('submit', submitForm);
 
 function Buscar() {
-  const ciudad = document.getElementById("datos").value;
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&APPID=${api.key}`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${cajaBuscar.value}&APPID=${api.key}`;
 
   fetch(url)
-    .then(Response => Response.json())
+    .then(response => response.json())
     .then((data) => {
       console.log(data);
-      actualizarClima(data); // Pasar el objeto "data" en lugar de "datos"
+      actualizarClima(data);
     })
     .catch(error => {
       console.log("error", error);
-      swal("ups", "ese dato te lo debo jaja :D", "error");
+      swal("Ups", "Ese dato te lo debo jaja :D", "error");
     });
 }
 
@@ -56,31 +53,31 @@ function actualizarClima(data) {
 
   // Condiciones para las estaciones del clima
   if (clima >= 30) {
-    imagenesDelClimaArray.push('img/verano.png');
-  } else if (clima <= 0) {
-    imagenesDelClimaArray.push('img/invierno.png');
+    imagenesDelClimaArray.push(imagenesDelClima[8]);
   } else if (clima >= 20) {
-    imagenesDelClimaArray.push('img/primavera.png');
-  } else if (clima <= 10) {
-    imagenesDelClimaArray.push('img/otoño.png');
-  }
-  
-  // Condiciones para los datos del clima
-  if (clima === "soleado") {
-    imagenesDelClimaArray.push('img/sol.gif');
-  } else if (clima === "parcialmente soleado") {
-    imagenesDelClimaArray.push('img/parcialmente-nublado.gif');
-  } else if (clima === "parcialmente nublado") {
-    imagenesDelClimaArray.push('img/parcialmente-nublado.gif');
-  } else if (clima === "lluvia" || clima === "probabilidad de lluvia") {
-    imagenesDelClimaArray.push('img/lluvia.gif');
-  } else if (clima === "parcialmente nublado con mejoras temporareas") {
-    imagenesDelClimaArray.push('img/parcialmente-nublado-lluvia-y-sol.gif');
-  } else if (clima === "tormenta" || clima === "probabilidad de tormentas") {
-    imagenesDelClimaArray.push('img/tormenta.gif');
+    imagenesDelClimaArray.push(imagenesDelClima[6]);
+  } else if (clima >= 10) {
+    imagenesDelClimaArray.push(imagenesDelClima[9]);
+  } else if (clima >= 0) {
+    imagenesDelClimaArray.push(imagenesDelClima[7]);
+  } else if (clima < 0) {
+    imagenesDelClimaArray.push(imagenesDelClima[0]);
   }
 
-  temp.innerHTML = clima + "°c";
+  // Condiciones para los datos del clima
+  if (clima >= 25) {
+    imagenesDelClimaArray.push(imagenesDelClima[3]);
+  } else if (clima >= 15) {
+    imagenesDelClimaArray.push(imagenesDelClima[4]);
+  } else if (clima >= 5) {
+    imagenesDelClimaArray.push(imagenesDelClima[2]);
+  } else if (clima >= 0) {
+    imagenesDelClimaArray.push(imagenesDelClima[5]);
+  } else if (clima < 0) {
+    imagenesDelClimaArray.push(imagenesDelClima[1]);
+  }
+
+  temp.innerHTML = clima + "°C";
   tempImg.src = imagenesDelClimaArray[0];
 }
 
