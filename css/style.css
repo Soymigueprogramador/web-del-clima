@@ -85,7 +85,7 @@ ul, li, a {
     list-style-type: none;
     display: inline-block;
     flex-direction: column;
-    margin: 10px;
+    margin: 5px;
 }
 .iconos-footer {
     width: 48px;
