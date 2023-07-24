@@ -4,7 +4,7 @@
   margin: 0;
 }
 body{
-  background-color: blue;
+  background-color: black;
 }
 h1 {
   color: white;
@@ -28,7 +28,7 @@ h2{
 .buscar{
   width: 100%;
   background-color: black;
-  border:  none;
+  border: 2px solid white;
   font-size: 2rem;
   color: white;
 }
@@ -47,16 +47,47 @@ button {
 .card {
   display: inline-block;
 }
-.card-img-top {
-  width: auto; 
-  height: 100%;
-  object-fit: cover;  
+.mostrar {
+  display: 25%;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1c1c1c;
+  border: 2px solid white;
+}
+img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.texto {
+  text-align: center;
+  color: white;
+  font-size: 2rem;
 }
 footer{
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  padding: 20px;
-  width: 100%;
-  border-top: 1ox solid white;
+    width: 100%;
+    height: 10vh;
+    display: inline-block;
+    justify-content: center;
+    text-align: center;
+    border-top: 1px solid #fff;
+    padding: 1vh;
+}
+.final {
+  color: white;
+  text-align: center;
+  font-size: 1rem;
+}
+ul, li, a {
+    text-decoration: none;
+    list-style-type: none;
+    display: inline-block;
+    flex-direction: column;
+    margin: 10px;
+}
+.iconos-footer {
+    width: 48px;
+    height: 48px;
 }
